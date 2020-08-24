@@ -1,7 +1,7 @@
 <div  align="center">
 
 <H1>AirportAPI
-
+<img src="./readme/logo.png" width="400">
 :airplane: Este projeto foi criado na intenção de propor uma API com dados de Aeroportos.
  
 
@@ -39,7 +39,7 @@ Chamando a seguinte rota:
 
 *Retorna
 
-<img src="./readme/response.png" >
+<img src="./readme/response.png" width="400">
 
 *
 # :construction_worker: Como executar o projeto:
