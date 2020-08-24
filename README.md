@@ -22,7 +22,7 @@ Este projeto foi feito utilizando as seguintes tecnologias e dados.
 <ul>
 
 <li><a  href="https://nodejs.org/en/docs/">NodeJs</a></li>
-<li><a  href="[https://ourairports.com/data/">OurAirports</a></li>
+<li><a  href="https://ourairports.com/data/">OurAirports</a></li>
 </ul>
 
 
@@ -39,7 +39,7 @@ Chamando a seguinte rota:
 
 *Retorna
 
-
+<img src="./readme/response.png" >
 
 *
 # :construction_worker: Como executar o projeto:
