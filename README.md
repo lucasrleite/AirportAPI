@@ -2,8 +2,7 @@
 
 <H1>AirportAPI</H1>
 <br>
-<br>
-<br>
+
 <img src="./readme/logo.png" width="400">
 <br>
 <br>
@@ -53,7 +52,7 @@ Chamando a seguinte rota:
 
   
 
-### :computer: Downloading project
+### :computer: Baixar e executar o projeto
 
   
 
