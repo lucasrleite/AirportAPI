@@ -83,48 +83,10 @@ $ yarn start or npm run start
 
   
 ```
-
   
 
 API available to be tested on http://localhost:3000/.
 
-  
-
-### 📱 Running project on mobile
-
-  
-
-To run the project on mobile you need a cellphone with the [expo](https://play.google.com/store/apps/details?id=host.exp.exponent) app instaled or an android/ios emulator.
-
-<br />
-
-  
-
-```bash
-
-# Go to project's mobile folder
-
-$ cd mobile/
-
-  
-
-# Install dependencies
-
-$ yarn install or npm install
-
-  
-
-# Run application
-
-$ yarn start or npm run start
-
-```
-
-  
-
-<!--You can read the resulting QRCode with [expo](https://play.google.com/store/apps/details?id=host.exp.exponent) or through an emulator.-->
-
-  
 
 # :memo: ToDo
 
