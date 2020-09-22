@@ -160,6 +160,7 @@ function infoApi(icao){
 }
 router.get("/teste/:icao", (req,res) =>{
   var icaoS = req.params.icao;
+  
   var resp = infoApi(icaoS);
   if(resp==undefined){
     res.status(500).send("Aeroporto não encontrado!!!")
@@ -200,7 +201,7 @@ router.get('/metar/:icao',(req,res)=>{
   const getData = async url => {
     const headers = {
       "Content-Type": "application/json",
-      'X-API-Key': '20a28e2672b34ccabb2cf0a176'
+      'X-API-Key': process.env.APICHAVE
     }
     try {
       const response = await fetch(url,{ method: 'GET', headers: headers});
