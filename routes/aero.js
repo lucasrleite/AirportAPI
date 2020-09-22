@@ -3,7 +3,7 @@ var router = express.Router();
 const fs = require('fs');
 const path = require('path');
 const neatCsv = require('neat-csv');
-
+const fetch = require('node-fetch')
 const { response, json } = require('express');
 const aerosPath = path.join(__dirname, '../public/airport2.json');
 const rwyPath = path.join(__dirname, '../public/runways.json');
@@ -14,6 +14,8 @@ const freqPath = path.join(__dirname, '../public/frequencies.json');
 // Searchs : countries, frequencies, regions
 
 // Feitas : Aeros , Runways
+
+//chave api : 20a28e2672b34ccabb2cf0a176
 
 function searchFreq(icaoS){ 
   let rawFreq = fs.readFileSync(freqPath);
@@ -30,8 +32,15 @@ function searchFreq(icaoS){
       "type": arrFound[key].type,
       "description": arrFound[key].description,
       "frequency": arrFound[key].frequency_mhz
-    }     
-      frequencies.push(frq)  
+    }
+    
+
+      
+      frequencies.push(frq)
+    
+  
+    
+    
   }
 
   return frequencies;
@@ -90,17 +99,29 @@ function searchRwy(icaoS){
         "rwyLatitude": arrFound[key].he_latitude_deg,
         "rwyLongitude" : arrFound[key].he_longitude_deg,
         "rwyElevation": arrFound[key].he_elevation_ft
-      }   
-      runways.push(rwy1,rwy2) 
+      }
+
+
+      
+      runways.push(rwy1,rwy2)
+    
+  
+    
+    
   }
 
   return runways;
 }
 
 function infoApi(icao){
-  icaoS = icao.toUpperCase(); 
+
+  icaoS = icao.toUpperCase();
+
+
+  
   let aero = searchAeros(icaoS);
- 
+  
+  
   if(aero==undefined){
 
   }else{
@@ -134,9 +155,10 @@ function infoApi(icao){
       }
     }
     return json
-  }  
+  }
+  
 }
-router.get("/info/:icao", (req,res) =>{
+router.get("/teste/:icao", (req,res) =>{
   var icaoS = req.params.icao;
   var resp = infoApi(icaoS);
   if(resp==undefined){
@@ -146,6 +168,51 @@ router.get("/info/:icao", (req,res) =>{
 
 })
 
+router.get('/info/:icao', (req, res) => {
+  var icaoS = req.params.icao;
+  
+  var runways = [];
+  var rsAirp = searchAeros(icaoS);
+  var rsRun = searchRwy(icaoS);
 
+
+  var rwyDetails = {
+  "rwyWidth" : rsRun[0].width_ft,
+  "rwyLength" : rsRun[0].length_ft,
+  "typeSurface": rsRun[0].surface,
+  "isLighted": rsRun[0].lighted
+  }
+  
+  
+  console.log(runways)
+  var jsonR = {
+    airport : rsAirp,
+    rwyDetails,
+    runways
+  }
+  res.send(jsonR);  
+});
+
+router.get('/metar/:icao',(req,res)=>{
+  var icaoS = req.params.icao;
+  const url =`https://api.checkwx.com/metar/${icaoS}/decoded`;
+  
+  const getData = async url => {
+    const headers = {
+      "Content-Type": "application/json",
+      'X-API-Key': '20a28e2672b34ccabb2cf0a176'
+    }
+    try {
+      const response = await fetch(url,{ method: 'GET', headers: headers});
+      const json = await response.json();
+      
+      res.send(json);
+    } catch (error) {
+      
+      res.send(error)
+    }
+  };
+  getData(url)
+})
 
 module.exports = router;
