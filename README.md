@@ -109,6 +109,6 @@ Em desenvolvimento...
 Primeiro commit 20/08/2020.
 
 
-Made with passion by [Lucas Leite](https://github.com/lcsxz) 🚀.
+Made with passion by [Lucas Leite](https://github.com/lucasrleite) 🚀.
 
-Este projeto tem uma [MIT LICENSE](https://github.com/lcsxz/AirportAPI/blob/master/LICENSE)
+Este projeto tem uma [MIT LICENSE](https://github.com/lucasrleite/AirportAPI/blob/master/LICENSE)
